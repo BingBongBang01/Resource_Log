@@ -186,6 +186,11 @@ class CollectorLoop:
             except Exception as e:
                 error_msgs.append(f"Network: {str(e)}")
 
+            try:
+                self._collect_fps(run_id, timestamp)
+            except Exception as e:
+                error_msgs.append(f"FPS: {str(e)}")
+
             # Always publish to app_state: the overlay reads these values
             # directly and has to keep working while the main window is
             # minimised. AppState itself suppresses the expensive part —
@@ -233,6 +238,40 @@ class CollectorLoop:
             sleep_time = max(0, next_run - now)
             if self.stop_event.wait(sleep_time):
                 break
+
+    def _collect_fps(self, run_id, timestamp):
+        """Record the frame rate of whatever RTSS is currently measuring.
+
+        Reading RTSS's shared memory is cheap enough to sit inline here, and
+        cheap enough to keep doing even when nothing is being logged — the
+        live monitor still wants numbers to show. Nothing is written when no
+        game is running, or an idle desktop would fill the table with rows
+        that say nothing.
+        """
+        from providers.fps_provider import get_fps_provider
+        from ui.state_manager import app_state
+
+        apps = get_fps_provider().get_apps()
+        app_state.set("fps_data", apps)
+
+        if not apps or not config.group_enabled("fps"):
+            return
+
+        log_fields = config.LOG_FIELDS
+        # The per-item checkboxes are the same ones the overlay offers, so an
+        # unticked field is blanked rather than dropping the whole row.
+        blanked = []
+        for app in apps:
+            row = dict(app)
+            for field, column in (
+                ("fps", "fps"), ("fps_avg", "fps_avg"), ("fps_min", "fps_min"),
+                ("fps_max", "fps_max"), ("frame_time", "frame_time_ms"),
+            ):
+                if not log_fields.get(field, True):
+                    row[column] = None
+            blanked.append(row)
+
+        self.writer.write_fps_data(run_id, timestamp, blanked)
 
     def _gpu_loop(self):
         """GPU sampling runs here, apart from the system loop.

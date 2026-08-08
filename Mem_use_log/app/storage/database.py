@@ -116,6 +116,22 @@ class Database:
                 )
             ''')
             
+            # Frame-rate Data Table. One row per game RTSS is measuring, so
+            # a session that ran two games keeps them apart by app_name.
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS fps_data (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp DATETIME,
+                    session_id TEXT,
+                    app_name TEXT,
+                    fps REAL,
+                    fps_avg REAL,
+                    fps_min REAL,
+                    fps_max REAL,
+                    frame_time_ms REAL
+                )
+            ''')
+
             # Create indices
             cursor.execute('''
                 CREATE INDEX IF NOT EXISTS idx_sys_session_time ON system_data(session_id, timestamp)
@@ -128,6 +144,7 @@ class Database:
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_gpu_session ON gpu_data(session_id)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_disk_session ON disk_data(session_id)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_network_session ON network_data(session_id)')
+            cursor.execute('CREATE INDEX IF NOT EXISTS idx_fps_session ON fps_data(session_id)')
             
             # Metadata Table
             cursor.execute('''
@@ -167,5 +184,11 @@ class Database:
                     
                 cursor.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES ('schema_version', '2')")
                 current_version = 2
-                
+
+            if current_version < 3:
+                # Version 3: fps_data. CREATE TABLE IF NOT EXISTS above has
+                # already made it; this only records that the schema moved on.
+                cursor.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES ('schema_version', '3')")
+                current_version = 3
+
             conn.commit()

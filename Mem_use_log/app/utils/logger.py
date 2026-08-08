@@ -2,7 +2,7 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+from utils.paths import PROJECT_ROOT
 
 def setup_logger():
     log_dir = os.path.join(PROJECT_ROOT, "logs")

@@ -1,22 +1,9 @@
 import os
-import sys
 import json
 from utils.logger import logger
 
-
-def _resolve_project_root() -> str:
-    """Directory that holds config.json, data/ and logs/.
-
-    When frozen with PyInstaller, __file__ points inside the bundle — for
-    a onefile build that's a temp folder wiped on exit, which would silently
-    throw away the database and settings. Anchor to the executable instead.
-    """
-    if getattr(sys, "frozen", False):
-        return os.path.dirname(os.path.abspath(sys.executable))
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-
-
-PROJECT_ROOT = _resolve_project_root()
+# Re-exported: storage.database and others import PROJECT_ROOT from here.
+from utils.paths import PROJECT_ROOT
 
 DEFAULT_LOG_FIELDS = {
     "cpu_usage": True,
@@ -29,6 +16,12 @@ DEFAULT_LOG_FIELDS = {
     "gpu_usage": True,
     "gpu_vram_used": True,
     "gpu_temperature": True,
+    # Frame rate, recorded per game the same way the overlay shows it.
+    "fps": True,
+    "fps_avg": True,
+    "fps_min": True,
+    "fps_max": True,
+    "frame_time": True,
 }
 
 # Which collector each loggable field belongs to. A collector whose fields
@@ -39,7 +32,11 @@ FIELD_GROUPS = {
     "cpu": ("cpu_usage", "cpu_freq_mhz", "cpu_temperature"),
     "memory": ("ram_used", "ram_available", "ram_total", "ram_usage_percent"),
     "gpu": ("gpu_usage", "gpu_vram_used", "gpu_temperature"),
+    "fps": ("fps", "fps_avg", "fps_min", "fps_max", "frame_time"),
 }
+
+# The loggable FPS fields, in the order the exporter writes them.
+FPS_LOG_FIELDS = FIELD_GROUPS["fps"]
 
 # What the on-screen overlay can show, in display order. The fps_* rows only
 # appear while a game is actually being measured.
@@ -50,22 +47,40 @@ OVERLAY_ITEM_ORDER = (
     "fps", "fps_avg", "fps_min", "fps_max", "frame_time",
 )
 
+# Frame rate only, like the GeForce Experience counter this is modelled on.
+# Everything else is opt-in from the Overlay page.
 DEFAULT_OVERLAY_ITEMS = {
-    "cpu_usage": True,
+    "cpu_usage": False,
     "cpu_temp": False,
-    "ram_used": True,
+    "ram_used": False,
     "ram_percent": False,
-    "gpu_usage": True,
+    "gpu_usage": False,
     "gpu_vram": False,
     "gpu_temp": False,
     "fps": True,
-    "fps_avg": True,
+    "fps_avg": False,
     "fps_min": False,
     "fps_max": False,
     "frame_time": False,
 }
 
 OVERLAY_POSITIONS = ("top_left", "top_right", "bottom_left", "bottom_right")
+
+
+def _is_hex_color(value: str) -> bool:
+    return (
+        len(value) == 7
+        and value.startswith("#")
+        and all(c in "0123456789abcdefABCDEF" for c in value[1:])
+    )
+
+
+def hex_to_rgb(value: str, fallback=(255, 255, 255)):
+    """'#39FF14' -> (57, 255, 20). Never raises: a bad colour in config.json
+    must not stop the overlay from drawing."""
+    if not isinstance(value, str) or not _is_hex_color(value):
+        return fallback
+    return tuple(int(value[i:i + 2], 16) for i in (1, 3, 5))
 
 
 class Settings:
@@ -86,11 +101,16 @@ class Settings:
         # Per-item toggle for what the live monitor actually logs to disk.
         self.LOG_FIELDS = dict(DEFAULT_LOG_FIELDS)
 
-        # On-screen overlay
+        # On-screen overlay. Text and background carry their own opacity —
+        # the default is an unboxed counter, green digits on nothing at all.
         self.OVERLAY_ENABLED = False
         self.OVERLAY_POSITION = "top_left"
         self.OVERLAY_ITEMS = dict(DEFAULT_OVERLAY_ITEMS)
-        self.OVERLAY_OPACITY = 0.80
+        self.OVERLAY_TEXT_OPACITY = 1.00
+        self.OVERLAY_BG_OPACITY = 0.00
+        self.OVERLAY_FONT_SIZE = 34
+        self.OVERLAY_TEXT_COLOR = "#39FF14"
+        self.OVERLAY_BG_COLOR = "#000000"
         self.OVERLAY_MARGIN = 12
 
     def group_enabled(self, group: str) -> bool:
@@ -148,9 +168,32 @@ class Settings:
                             if key in overlay_items:
                                 self.OVERLAY_ITEMS[key] = bool(overlay_items[key])
 
-                    opacity = data.get("overlay_opacity")
-                    if isinstance(opacity, (int, float)) and 0.1 <= opacity <= 1.0:
-                        self.OVERLAY_OPACITY = float(opacity)
+                    # overlay_opacity was one value for the whole window before
+                    # text and background could differ; carry it over as the
+                    # text opacity so an existing config doesn't go invisible.
+                    legacy_opacity = data.get("overlay_opacity")
+                    if isinstance(legacy_opacity, (int, float)) and 0.0 <= legacy_opacity <= 1.0:
+                        self.OVERLAY_TEXT_OPACITY = float(legacy_opacity)
+
+                    for key, attr in (
+                        ("overlay_text_opacity", "OVERLAY_TEXT_OPACITY"),
+                        ("overlay_bg_opacity", "OVERLAY_BG_OPACITY"),
+                    ):
+                        value = data.get(key)
+                        if isinstance(value, (int, float)) and 0.0 <= value <= 1.0:
+                            setattr(self, attr, float(value))
+
+                    font_size = data.get("overlay_font_size")
+                    if isinstance(font_size, int) and 8 <= font_size <= 200:
+                        self.OVERLAY_FONT_SIZE = font_size
+
+                    for key, attr in (
+                        ("overlay_text_color", "OVERLAY_TEXT_COLOR"),
+                        ("overlay_bg_color", "OVERLAY_BG_COLOR"),
+                    ):
+                        value = data.get(key)
+                        if isinstance(value, str) and _is_hex_color(value):
+                            setattr(self, attr, value)
             except Exception as e:
                 logger.error(f"Failed to load config: {e}")
 
@@ -175,7 +218,11 @@ class Settings:
             "overlay_enabled": self.OVERLAY_ENABLED,
             "overlay_position": self.OVERLAY_POSITION,
             "overlay_items": self.OVERLAY_ITEMS,
-            "overlay_opacity": self.OVERLAY_OPACITY,
+            "overlay_text_opacity": self.OVERLAY_TEXT_OPACITY,
+            "overlay_bg_opacity": self.OVERLAY_BG_OPACITY,
+            "overlay_font_size": self.OVERLAY_FONT_SIZE,
+            "overlay_text_color": self.OVERLAY_TEXT_COLOR,
+            "overlay_bg_color": self.OVERLAY_BG_COLOR,
         }
         try:
             with open(full_path, "w", encoding="utf-8") as f:

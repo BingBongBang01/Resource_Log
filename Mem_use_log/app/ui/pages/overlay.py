@@ -2,7 +2,7 @@ import customtkinter as ctk
 
 from ui.pages.base_page import BasePage
 from ui.theme import Colors, Spacing, get_typography
-from config.settings import config
+from config.settings import config, _is_hex_color
 from i18n import t
 from providers.fps_provider import get_fps_provider
 
@@ -103,13 +103,24 @@ class OverlayPage(BasePage):
                                text_color=Colors.TEXT_PRIMARY).grid(
                 row=r, column=c, sticky="w", padx=Spacing.MD, pady=Spacing.MD)
 
-        ctk.CTkLabel(right, text=t("overlay_opacity"), font=get_typography().body_large,
-                     text_color=Colors.TEXT_PRIMARY).pack(anchor="w", pady=(Spacing.SM, 0))
+        # Text and background carry separate opacities: the default look is
+        # bare digits over the game with no panel behind them at all.
+        self.text_opacity_slider = self._add_slider(
+            right, "overlay_text_opacity", config.OVERLAY_TEXT_OPACITY, self._on_text_opacity)
+        self.bg_opacity_slider = self._add_slider(
+            right, "overlay_bg_opacity", config.OVERLAY_BG_OPACITY, self._on_bg_opacity)
 
-        self.opacity_slider = ctk.CTkSlider(right, from_=0.2, to=1.0, number_of_steps=16,
-                                            command=self._on_opacity)
-        self.opacity_slider.set(config.OVERLAY_OPACITY)
-        self.opacity_slider.pack(anchor="w", fill="x", pady=Spacing.XS)
+        ctk.CTkLabel(right, text=t("overlay_font_size"), font=get_typography().body_large,
+                     text_color=Colors.TEXT_PRIMARY).pack(anchor="w", pady=(Spacing.SM, 0))
+        self.font_size_slider = ctk.CTkSlider(right, from_=12, to=96, number_of_steps=84,
+                                              command=self._on_font_size)
+        self.font_size_slider.set(config.OVERLAY_FONT_SIZE)
+        self.font_size_slider.pack(anchor="w", fill="x", pady=Spacing.XS)
+
+        self.text_color_var = self._add_color_row(right, "overlay_text_color",
+                                                  config.OVERLAY_TEXT_COLOR)
+        self.bg_color_var = self._add_color_row(right, "overlay_bg_color",
+                                                config.OVERLAY_BG_COLOR)
 
         ctk.CTkLabel(right, text=t("overlay_fullscreen_note"), font=get_typography().label,
                      text_color=Colors.TEXT_SECONDARY, wraplength=340,
@@ -117,8 +128,51 @@ class OverlayPage(BasePage):
 
         self.on_overlay_changed = None  # set by AppWindow
 
-    def _on_opacity(self, value):
-        config.OVERLAY_OPACITY = round(float(value), 2)
+    @staticmethod
+    def _add_slider(parent, label_key, value, command):
+        ctk.CTkLabel(parent, text=t(label_key), font=get_typography().body_large,
+                     text_color=Colors.TEXT_PRIMARY).pack(anchor="w", pady=(Spacing.SM, 0))
+        slider = ctk.CTkSlider(parent, from_=0.0, to=1.0, number_of_steps=20, command=command)
+        slider.set(value)
+        slider.pack(anchor="w", fill="x", pady=Spacing.XS)
+        return slider
+
+    def _add_color_row(self, parent, label_key, value):
+        """Colour as a typed hex code plus a live swatch — a full colour
+        picker would be a lot of dialog for two settings."""
+        ctk.CTkLabel(parent, text=t(label_key), font=get_typography().body_large,
+                     text_color=Colors.TEXT_PRIMARY).pack(anchor="w", pady=(Spacing.SM, 0))
+
+        row = ctk.CTkFrame(parent, fg_color="transparent")
+        row.pack(anchor="w", fill="x", pady=Spacing.XS)
+
+        var = ctk.StringVar(value=value)
+        entry = ctk.CTkEntry(row, textvariable=var, width=110)
+        entry.pack(side="left")
+
+        swatch = ctk.CTkFrame(row, width=32, height=28, corner_radius=6, fg_color=value)
+        swatch.pack(side="left", padx=Spacing.SM)
+
+        var.trace_add("write", lambda *_: self._on_color_typed(var, swatch))
+        return var
+
+    def _on_color_typed(self, var, swatch):
+        value = var.get().strip()
+        if not _is_hex_color(value):
+            return  # half-typed code; wait for the rest
+        swatch.configure(fg_color=value)
+        self._on_change()
+
+    def _on_text_opacity(self, value):
+        config.OVERLAY_TEXT_OPACITY = round(float(value), 2)
+        self._on_change()
+
+    def _on_bg_opacity(self, value):
+        config.OVERLAY_BG_OPACITY = round(float(value), 2)
+        self._on_change()
+
+    def _on_font_size(self, value):
+        config.OVERLAY_FONT_SIZE = int(round(float(value)))
         self._on_change()
 
     def _on_change(self):
@@ -126,6 +180,12 @@ class OverlayPage(BasePage):
         config.OVERLAY_POSITION = self.position_var.get()
         for key, var in self.item_vars.items():
             config.OVERLAY_ITEMS[key] = var.get()
+
+        for var, attr in ((getattr(self, "text_color_var", None), "OVERLAY_TEXT_COLOR"),
+                          (getattr(self, "bg_color_var", None), "OVERLAY_BG_COLOR")):
+            if var is not None and _is_hex_color(var.get().strip()):
+                setattr(config, attr, var.get().strip())
+
         config.save()
         if self.on_overlay_changed:
             self.on_overlay_changed()

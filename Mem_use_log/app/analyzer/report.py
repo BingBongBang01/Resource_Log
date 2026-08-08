@@ -50,25 +50,15 @@ class CSVExporter:
         
         # If user named it "system_data.csv", the others will be "gpu_system_data.csv". 
         # For better naming, if it starts with "system_", we can replace it, else prepend.
-        if base_name.startswith("system_"):
-            gpu_name = base_name.replace("system_", "gpu_", 1)
-            proc_name = base_name.replace("system_", "process_", 1)
-            disk_name = base_name.replace("system_", "disk_", 1)
-            net_name = base_name.replace("system_", "network_", 1)
-        else:
-            gpu_name = f"gpu_{base_name}"
-            proc_name = f"process_{base_name}"
-            disk_name = f"disk_{base_name}"
-            net_name = f"network_{base_name}"
-            
-        gpu_path = os.path.join(dir_name, gpu_name)
-        process_path = os.path.join(dir_name, proc_name)
-        disk_path = os.path.join(dir_name, disk_name)
-        net_path = os.path.join(dir_name, net_name)
-        
-        self._export_table("gpu_data", gpu_path, session_id)
-        self._export_table("process_data", process_path, session_id)
-        self._export_table("disk_data", disk_path, session_id)
-        self._export_table("network_data", net_path, session_id)
-        
+        for table, prefix in (("gpu_data", "gpu"), ("process_data", "process"),
+                              ("disk_data", "disk"), ("network_data", "network"),
+                              ("fps_data", "fps")):
+            # "system_log.csv" -> "gpu_log.csv"; anything else just gets the
+            # prefix stuck on the front.
+            if base_name.startswith("system_"):
+                name = base_name.replace("system_", f"{prefix}_", 1)
+            else:
+                name = f"{prefix}_{base_name}"
+            self._export_table(table, os.path.join(dir_name, name), session_id)
+
         return has_data

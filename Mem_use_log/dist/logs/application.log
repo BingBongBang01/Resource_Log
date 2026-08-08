@@ -1,0 +1,9 @@
+2026-08-08 21:00:57,608 - INFO - [autostart.py:68] - Startup entry moved; updating "C:\Users\thk\Documents\GitHub\Resource_Log\Mem_use_log\dist\Mem_use_log\Mem_use_log.exe" -> "C:\Users\thk\Documents\GitHub\Resource_Log\Mem_use_log\dist\Mem_use_log.exe"
+2026-08-08 21:00:59,196 - INFO - [shutdown.py:140] - Shutdown watcher listening for session end (hwnd 3213670).
+2026-08-08 21:00:59,466 - INFO - [overlay_window.py:171] - Overlay window created (hwnd 7081088).
+2026-08-08 21:00:59,474 - INFO - [tray_icon.py:114] - Tray icon created (hwnd 3936154).
+2026-08-08 21:00:59,499 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 21:02:19,398 - INFO - [sqlite_writer.py:42] - Waiting up to 15s for SQLiteWriter to drain queue and flush...
+2026-08-08 21:02:19,492 - INFO - [sqlite_writer.py:47] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 21:02:19,503 - INFO - [collector_loop.py:103] - Auto-exported session run_f8f70b59a4d94a6d9721cbe6c6d9fbdb to C:\Users\thk\Documents\GitHub\Resource_Log\Mem_use_log\dist\data\exports\system_log_2026-08-08_21-02-19.csv
+2026-08-08 21:03:11,158 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters

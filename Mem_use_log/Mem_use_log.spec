@@ -3,14 +3,17 @@
 
 Build with:   pyinstaller Mem_use_log.spec --noconfirm
 
-Produces a ONEDIR build in dist/Mem_use_log/ (run Mem_use_log.exe).
-Onedir is deliberate: this app is meant to start with Windows and run all
-day, and a onefile build re-extracts the whole bundle into a temp folder on
-every launch — slower to start and pointless disk churn for a background
-logger. See the note at the bottom if a single file is required anyway.
+Produces a ONEFILE build: a single dist/Mem_use_log.exe that runs from
+anywhere, with no folder to keep alongside it. Copying just the .exe out of
+an old onedir build is what produced "Failed to load Python DLL" — that
+build kept the interpreter in the _internal folder next to it.
 
-The app writes config.json, data/ and logs/ next to the executable
-(see _resolve_project_root in app/config/settings.py).
+The trade-off is startup: the bundle is unpacked into a temp folder on
+every launch. For an app that starts with Windows and then runs all day
+that cost is paid once, which is why onefile wins here.
+
+The app writes config.json, data/ and logs/ next to the executable — never
+into the temp folder, which is wiped on exit. See app/utils/paths.py.
 """
 
 from PyInstaller.utils.hooks import collect_data_files
@@ -67,8 +70,10 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
+    exclude_binaries=False,     # onefile: everything lands inside the .exe
     name="Mem_use_log",
     debug=False,
     bootloader_ignore_signals=False,
@@ -82,16 +87,5 @@ exe = EXE(
     entitlements_file=None,
 )
 
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.datas,
-    strip=False,
-    upx=False,
-    upx_exclude=[],
-    name="Mem_use_log",
-)
-
-# To build a single .exe instead, replace the EXE/COLLECT pair above with a
-# single EXE(pyz, a.scripts, a.binaries, a.datas, ..., exclude_binaries=False)
-# call. Startup then costs an extraction step on every launch.
+# No COLLECT step: onefile puts everything in the EXE above, so the build
+# output is the single file dist/Mem_use_log.exe.

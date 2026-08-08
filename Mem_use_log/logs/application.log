@@ -2561,3 +2561,12 @@ wmi.x_wmi_uninitialised_thread: <x_wmi: WMI returned a syntax error: you're prob
 2026-08-08 18:21:21,064 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
 2026-08-08 18:21:31,858 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
 2026-08-08 18:21:32,361 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 20:25:12,871 - INFO - [shutdown.py:140] - Shutdown watcher listening for session end (hwnd 5574170).
+2026-08-08 20:25:13,164 - INFO - [tray_icon.py:114] - Tray icon created (hwnd 10158896).
+2026-08-08 20:25:13,237 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 20:25:15,879 - INFO - [sqlite_writer.py:39] - Waiting up to 15s for SQLiteWriter to drain queue and flush...
+2026-08-08 20:25:16,218 - INFO - [sqlite_writer.py:44] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 20:25:16,234 - INFO - [collector_loop.py:103] - Auto-exported session run_0cf2da79ecae453c9a27491e249ab48c to C:\Users\thk\Desktop\log\system_log_2026-08-08_20-25-16.csv
+2026-08-08 20:33:54,384 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 20:44:57,636 - INFO - [shutdown.py:51] - Shutdown (app quit): saving logs...
+2026-08-08 20:44:57,636 - INFO - [shutdown.py:54] - Shutdown (app quit): logs saved.

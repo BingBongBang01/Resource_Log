@@ -12,6 +12,8 @@ from ui.pages.live_monitor import LiveMonitorPage
 from ui.pages.overlay import OverlayPage
 from ui.pages.export import ExportPage
 from ui.overlay_window import OverlayWindow
+from ui.tray_icon import TrayIcon
+from utils.logger import logger
 from providers.fps_provider import get_fps_provider
 from ui.pages.settings import SettingsPage
 from ui.pages.diagnostics import DiagnosticsPage
@@ -50,7 +52,12 @@ class AppWindow(ctk.CTk):
     def __init__(self, collector_loop):
         super().__init__()
         self.collector = collector_loop
-        
+
+        # Set before any binding can fire: the tray is created at the end of
+        # __init__, but <Unmap> can arrive while the window is still building.
+        self.tray = None
+        self.tray_available = False
+
         self.title(t("app_title"))
         self.geometry("1024x768")
         self.minsize(800, 600)
@@ -124,18 +131,60 @@ class AppWindow(ctk.CTk):
         self.current_page = None
         self.nav_rail.select("Dashboard")
 
-        # Closing the window is just one of several ways this process can
-        # end; they all converge on utils.shutdown so the logs get saved
-        # exactly once regardless of which one fires.
+        # Live in the tray: closing or minimising the window only hides it,
+        # so a recording in progress keeps running. Quitting for real goes
+        # through _quit_app, which converges on utils.shutdown like every
+        # other exit path so the logs are saved exactly once.
+        self.tray = TrayIcon(tooltip=t("app_title"), on_show=self._restore_window, on_quit=self._quit_app)
+        self.tray_available = self.tray.start()
+        if not self.tray_available:
+            logger.warning("No tray icon; closing the window will quit the app.")
         self.protocol("WM_DELETE_WINDOW", self._on_close)
+        self.after(150, self._poll_tray)
 
         # Auto-start logging on launch if enabled in settings
         if config.AUTO_START_RECORDING and not self.collector.running:
             self.toggle_recording()
 
+    def _poll_tray(self):
+        if self.tray:
+            self.tray.poll()
+        self.after(150, self._poll_tray)
+
+    @staticmethod
+    def _alt_held() -> bool:
+        """Windows delivers the same WM_CLOSE for the X button and for
+        Alt+F4, so whether Alt is down is the only thing that separates
+        'put it away' from 'I actually want out'."""
+        try:
+            import win32api
+            import win32con
+            return bool(win32api.GetAsyncKeyState(win32con.VK_MENU) & 0x8000)
+        except Exception:
+            return False
+
     def _on_close(self):
+        if self.tray_available and not self._alt_held():
+            self._hide_to_tray()
+        else:
+            self._quit_app()
+
+    def _hide_to_tray(self):
+        self.withdraw()
+        app_state.set_ui_active(False)
+
+    def _restore_window(self):
+        self.deiconify()
+        self.state("normal")
+        self.lift()
+        self.focus_force()
+        app_state.set_ui_active(True)
+
+    def _quit_app(self):
         from utils import shutdown
-        shutdown.run_now("window closed")
+        shutdown.run_now("app quit")
+        if self.tray:
+            self.tray.stop()
         self.destroy()
 
     def toggle_recording(self):
@@ -151,7 +200,7 @@ class AppWindow(ctk.CTk):
             app_state.set("recording_state", "stopped")
 
     def _on_overlay_settings_changed(self):
-        self.overlay.set_opacity(config.OVERLAY_OPACITY)
+        self.overlay.apply_settings()
         if not config.OVERLAY_ENABLED:
             self.overlay.hide()
         else:
@@ -191,7 +240,6 @@ class AppWindow(ctk.CTk):
 
         if game:
             for key, src, suffix, dec in (
-                ("fps", "fps", "", 0),
                 ("fps_avg", "fps_avg", "", 1),
                 ("fps_min", "fps_min", "", 0),
                 ("fps_max", "fps_max", "", 0),
@@ -199,6 +247,11 @@ class AppWindow(ctk.CTk):
             ):
                 formatted = self._fmt(game.get(src), suffix, dec)
                 values[key] = f"{t(f'overlay_{key}')}  {formatted}" if formatted else None
+
+            # The headline frame rate carries no label: it is drawn as a
+            # seven-segment number, and a caption beside it would break the
+            # look this is modelled on.
+            values["fps"] = self._fmt(game.get("fps"), "", 0)
 
         return values
 
@@ -222,11 +275,21 @@ class AppWindow(ctk.CTk):
     def _on_visibility_change(self, event=None):
         """Minimising to the taskbar/tray mutes all UI refresh work; logging
         to disk keeps running untouched."""
+        # <Unmap>/<Map> bubble up from every child widget; only the window's
+        # own state is being tracked here.
+        if event is not None and event.widget is not self:
+            return
+
         try:
             visible = self.state() not in ("iconic", "withdrawn")
         except Exception:
             visible = True
         app_state.set_ui_active(visible)
+
+        # Minimising goes to the tray too, not just the taskbar. Deferred so
+        # the withdraw doesn't run inside Tk's own <Unmap> dispatch.
+        if self.tray_available and not visible:
+            self.after(0, self._hide_to_tray)
 
     def _sync_backend_state(self):
         # Nothing on screen to refresh while hidden — poll far less often.

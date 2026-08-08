@@ -95,6 +95,24 @@ class LiveMonitorPage(BasePage):
         self.gpu_detail_frame.pack(fill="x", pady=(Spacing.SM, 0))
         self.gpu_detail_rows = []
 
+        # Frame rate. The same five items the overlay offers, logged per game
+        # RTSS reports; the rows read "-" whenever nothing is being measured.
+        lbl_fps = ctk.CTkLabel(col2, text=t("overlay_fps_section"), font=get_typography().title,
+                               text_color=Colors.PRIMARY)
+        lbl_fps.pack(anchor="w", pady=(Spacing.LG, Spacing.SM))
+
+        self.fps_rows = {}
+        for field_key, label_key in (
+            ("fps", "overlay_fps"),
+            ("fps_avg", "overlay_fps_avg"),
+            ("fps_min", "overlay_fps_min"),
+            ("fps_max", "overlay_fps_max"),
+            ("frame_time", "overlay_frame_time"),
+        ):
+            row = StatRow(col2, t(label_key), field_key=field_key)
+            row.pack(fill="x")
+            self.fps_rows[field_key] = row
+
         self._bind_state()
 
     def _bind_state(self):
@@ -112,6 +130,22 @@ class LiveMonitorPage(BasePage):
         app_state.add_listener("ram_percent", lambda v: self.ram_util.set_value(f"{v}%"))
 
         app_state.add_listener("gpu_data", self._update_gpu)
+        app_state.add_listener("fps_data", self._update_fps)
+
+    def _update_fps(self, apps):
+        """Show the fastest-presenting app, matching what the overlay picks."""
+        game = max(apps, key=lambda a: a.get("fps") or 0) if apps else None
+
+        for field_key, source, suffix in (
+            ("fps", "fps", ""),
+            ("fps_avg", "fps_avg", ""),
+            ("fps_min", "fps_min", ""),
+            ("fps_max", "fps_max", ""),
+            ("frame_time", "frame_time_ms", " ms"),
+        ):
+            value = game.get(source) if game else None
+            self.fps_rows[field_key].set_value(
+                f"{value}{suffix}" if value is not None else t("unavailable"))
 
     def _update_gpu(self, gpu_list):
         if not gpu_list:

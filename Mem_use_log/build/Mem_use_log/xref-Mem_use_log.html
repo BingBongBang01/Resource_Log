@@ -121,7 +121,7 @@ imported by:
 
 <div class="node">
   <a name="run.py"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/run.py" type="text/plain"><tt>run.py</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/run.py" type="text/plain"><tt>run.py</tt></a>
 <span class="moduletype">Script</span>  <div class="import">
 imports:
     <a href="#_collections_abc">_collections_abc</a>
@@ -288,13 +288,18 @@ imports:
  &#8226;   <a href="#traceback">traceback</a>
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#ui.app_window">ui.app_window</a>
+ &#8226;   <a href="#utils">utils</a>
+ &#8226;   <a href="#utils.autostart">utils.autostart</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
  &#8226;   <a href="#warnings">warnings</a>
  &#8226;   <a href="#weakref">weakref</a>
  &#8226;   <a href="#win32api">win32api</a>
  &#8226;   <a href="#win32com">win32com</a>
  &#8226;   <a href="#win32com.client">win32com.client</a>
  &#8226;   <a href="#win32com.client.dynamic">win32com.client.dynamic</a>
+ &#8226;   <a href="#win32con">win32con</a>
  &#8226;   <a href="#win32event">win32event</a>
+ &#8226;   <a href="#win32gui">win32gui</a>
  &#8226;   <a href="#winerror">winerror</a>
  &#8226;   <a href="#wmi">wmi</a>
 
@@ -361,15 +366,20 @@ imports:
  &#8226;   <a href="#PIL.ImageChops">PIL.ImageChops</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
  &#8226;   <a href="#PIL.ImageColor">PIL.ImageColor</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL.ImageMode">PIL.ImageMode</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
  &#8226;   <a href="#PIL.ImagePalette">PIL.ImagePalette</a>
+ &#8226;   <a href="#PIL.ImagePath">PIL.ImagePath</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageSequence">PIL.ImageSequence</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
+ &#8226;   <a href="#PIL.ImageText">PIL.ImageText</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
  &#8226;   <a href="#PIL.ImageWin">PIL.ImageWin</a>
  &#8226;   <a href="#PIL.Jpeg2KImagePlugin">PIL.Jpeg2KImagePlugin</a>
@@ -420,15 +430,20 @@ imported by:
  &#8226;   <a href="#PIL.ImageChops">PIL.ImageChops</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
  &#8226;   <a href="#PIL.ImageColor">PIL.ImageColor</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL.ImageMode">PIL.ImageMode</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
  &#8226;   <a href="#PIL.ImagePalette">PIL.ImagePalette</a>
+ &#8226;   <a href="#PIL.ImagePath">PIL.ImagePath</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageSequence">PIL.ImageSequence</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
+ &#8226;   <a href="#PIL.ImageText">PIL.ImageText</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
  &#8226;   <a href="#PIL.ImageWin">PIL.ImageWin</a>
  &#8226;   <a href="#PIL.ImtImagePlugin">PIL.ImtImagePlugin</a>
@@ -468,6 +483,7 @@ imported by:
  &#8226;   <a href="#PIL._deprecate">PIL._deprecate</a>
  &#8226;   <a href="#PIL._imaging">PIL._imaging</a>
  &#8226;   <a href="#PIL._imagingcms">PIL._imagingcms</a>
+ &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
  &#8226;   <a href="#PIL._imagingmath">PIL._imagingmath</a>
  &#8226;   <a href="#PIL._imagingtk">PIL._imagingtk</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
@@ -476,6 +492,7 @@ imported by:
  &#8226;   <a href="#PIL._webp">PIL._webp</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
  &#8226;   <a href="#customtkinter.windows.widgets.image.ctk_image">customtkinter.windows.widgets.image.ctk_image</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
 
   </div>
 
@@ -1117,11 +1134,15 @@ imported by:
  &#8226;   <a href="#PIL.ImageChops">PIL.ImageChops</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
  &#8226;   <a href="#PIL.ImageColor">PIL.ImageColor</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
  &#8226;   <a href="#PIL.ImagePalette">PIL.ImagePalette</a>
+ &#8226;   <a href="#PIL.ImagePath">PIL.ImagePath</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageSequence">PIL.ImageSequence</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
@@ -1157,6 +1178,7 @@ imported by:
  &#8226;   <a href="#PIL.XpmImagePlugin">PIL.XpmImagePlugin</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
  &#8226;   <a href="#customtkinter.windows.widgets.image.ctk_image">customtkinter.windows.widgets.image.ctk_image</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
 
   </div>
 
@@ -1177,6 +1199,7 @@ imported by:
     <a href="#PIL">PIL</a>
  &#8226;   <a href="#PIL.GifImagePlugin">PIL.GifImagePlugin</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
 
   </div>
 
@@ -1228,8 +1251,65 @@ imports:
 imported by:
     <a href="#PIL">PIL</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
  &#8226;   <a href="#PIL.ImagePalette">PIL.ImagePalette</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="PIL.ImageDraw"></a>
+  <a target="code" href="///C:/Users/thk/AppData/Local/Programs/Python/Python312/Lib/site-packages/PIL/ImageDraw.py" type="text/plain"><tt>PIL.ImageDraw</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageColor">PIL.ImageColor</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#PIL.ImageText">PIL.ImageText</a>
+ &#8226;   <a href="#PIL._typing">PIL._typing</a>
+ &#8226;   <a href="#__future__">__future__</a>
+ &#8226;   <a href="#collections.abc">collections.abc</a>
+ &#8226;   <a href="#math">math</a>
+ &#8226;   <a href="#struct">struct</a>
+ &#8226;   <a href="#types">types</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="PIL.ImageDraw2"></a>
+  <a target="code" href="///C:/Users/thk/AppData/Local/Programs/Python/Python312/Lib/site-packages/PIL/ImageDraw2.py" type="text/plain"><tt>PIL.ImageDraw2</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageColor">PIL.ImageColor</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#PIL.ImagePath">PIL.ImagePath</a>
+ &#8226;   <a href="#PIL._typing">PIL._typing</a>
+ &#8226;   <a href="#__future__">__future__</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
 
   </div>
 
@@ -1278,6 +1358,7 @@ imported by:
  &#8226;   <a href="#PIL.IcoImagePlugin">PIL.IcoImagePlugin</a>
  &#8226;   <a href="#PIL.ImImagePlugin">PIL.ImImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
  &#8226;   <a href="#PIL.ImtImagePlugin">PIL.ImtImagePlugin</a>
@@ -1333,6 +1414,43 @@ imports:
 imported by:
     <a href="#PIL">PIL</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="PIL.ImageFont"></a>
+  <a target="code" href="///C:/Users/thk/AppData/Local/Programs/Python/Python312/Lib/site-packages/PIL/ImageFont.py" type="text/plain"><tt>PIL.ImageFont</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
+ &#8226;   <a href="#PIL._imaging">PIL._imaging</a>
+ &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
+ &#8226;   <a href="#PIL._typing">PIL._typing</a>
+ &#8226;   <a href="#PIL._util">PIL._util</a>
+ &#8226;   <a href="#__future__">__future__</a>
+ &#8226;   <a href="#base64">base64</a>
+ &#8226;   <a href="#enum">enum</a>
+ &#8226;   <a href="#io">io</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#types">types</a>
+ &#8226;   <a href="#typing">typing</a>
+ &#8226;   <a href="#warnings">warnings</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
+ &#8226;   <a href="#PIL.ImageText">PIL.ImageText</a>
+ &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
 
   </div>
 
@@ -1454,6 +1572,25 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="PIL.ImagePath"></a>
+  <a target="code" href="///C:/Users/thk/AppData/Local/Programs/Python/Python312/Lib/site-packages/PIL/ImagePath.py" type="text/plain"><tt>PIL.ImagePath</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#__future__">__future__</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="PIL.ImageQt"></a>
   <a target="code" href="///C:/Users/thk/AppData/Local/Programs/Python/Python312/Lib/site-packages/PIL/ImageQt.py" type="text/plain"><tt>PIL.ImageQt</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -1522,6 +1659,26 @@ imports:
 imported by:
     <a href="#PIL">PIL</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="PIL.ImageText"></a>
+  <a target="code" href="///C:/Users/thk/AppData/Local/Programs/Python/Python312/Lib/site-packages/PIL/ImageText.py" type="text/plain"><tt>PIL.ImageText</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#PIL._typing">PIL._typing</a>
+ &#8226;   <a href="#__future__">__future__</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
 
   </div>
 
@@ -2441,7 +2598,9 @@ imported by:
  &#8226;   <a href="#PIL.GifImagePlugin">PIL.GifImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
+ &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
 
   </div>
 
@@ -2462,6 +2621,25 @@ imports:
 imported by:
     <a href="#PIL">PIL</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="PIL._imagingft"></a>
+  <tt>PIL._imagingft</tt> <span class="moduletype"><tt>C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\PIL\_imagingft.cp312-win_amd64.pyd</tt></span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#PIL._imaging">PIL._imaging</a>
+ &#8226;   <a href="#collections.abc">collections.abc</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#PIL.ImageFont">PIL.ImageFont</a>
 
   </div>
 
@@ -2522,8 +2700,12 @@ imported by:
     <a href="#PIL.GifImagePlugin">PIL.GifImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#PIL.ImageText">PIL.ImageText</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
  &#8226;   <a href="#PIL.MpegImagePlugin">PIL.MpegImagePlugin</a>
  &#8226;   <a href="#PIL.TiffImagePlugin">PIL.TiffImagePlugin</a>
@@ -2555,6 +2737,7 @@ imported by:
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.MpoImagePlugin">PIL.MpoImagePlugin</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
@@ -2668,15 +2851,20 @@ imported by:
  &#8226;   <a href="#PIL.ImageChops">PIL.ImageChops</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
  &#8226;   <a href="#PIL.ImageColor">PIL.ImageColor</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL.ImageMode">PIL.ImageMode</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
  &#8226;   <a href="#PIL.ImagePalette">PIL.ImagePalette</a>
+ &#8226;   <a href="#PIL.ImagePath">PIL.ImagePath</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageSequence">PIL.ImageSequence</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
+ &#8226;   <a href="#PIL.ImageText">PIL.ImageText</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
  &#8226;   <a href="#PIL.ImageWin">PIL.ImageWin</a>
  &#8226;   <a href="#PIL.ImtImagePlugin">PIL.ImtImagePlugin</a>
@@ -3767,7 +3955,7 @@ imported by:
 
 <div class="node">
   <a name="analyzer.report"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/analyzer/report.py" type="text/plain"><tt>analyzer.report</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/analyzer/report.py" type="text/plain"><tt>analyzer.report</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#analyzer">analyzer</a>
@@ -3779,7 +3967,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#ui.pages.export">ui.pages.export</a>
+    <a href="#scheduler.collector_loop">scheduler.collector_loop</a>
+ &#8226;   <a href="#ui.pages.export">ui.pages.export</a>
 
   </div>
 
@@ -4817,6 +5006,7 @@ imported by:
     <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#logging">logging</a>
  &#8226;   <a href="#multiprocessing.util">multiprocessing.util</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
  &#8226;   <a href="#weakref">weakref</a>
 
   </div>
@@ -4837,7 +5027,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#email._encoded_words">email._encoded_words</a>
+    <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#email._encoded_words">email._encoded_words</a>
  &#8226;   <a href="#email.base64mime">email.base64mime</a>
  &#8226;   <a href="#email.encoders">email.encoders</a>
  &#8226;   <a href="#encodings.base64_codec">encodings.base64_codec</a>
@@ -5234,6 +5425,7 @@ imports:
 imported by:
     <a href="#PIL.GimpGradientFile">PIL.GimpGradientFile</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
@@ -5243,6 +5435,7 @@ imported by:
  &#8226;   <a href="#PIL.Jpeg2KImagePlugin">PIL.Jpeg2KImagePlugin</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
  &#8226;   <a href="#PIL.TiffImagePlugin">PIL.TiffImagePlugin</a>
+ &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#asyncio.base_events">asyncio.base_events</a>
  &#8226;   <a href="#asyncio.coroutines">asyncio.coroutines</a>
@@ -5281,7 +5474,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.base"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/base.py" type="text/plain"><tt>collectors.base</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/base.py" type="text/plain"><tt>collectors.base</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#abc">abc</a>
@@ -5304,7 +5497,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.cpu"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/cpu.py" type="text/plain"><tt>collectors.cpu</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/cpu.py" type="text/plain"><tt>collectors.cpu</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collectors">collectors</a>
@@ -5326,7 +5519,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.gpu"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/gpu.py" type="text/plain"><tt>collectors.gpu</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/gpu.py" type="text/plain"><tt>collectors.gpu</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collectors">collectors</a>
@@ -5347,7 +5540,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.memory"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/memory.py" type="text/plain"><tt>collectors.memory</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/memory.py" type="text/plain"><tt>collectors.memory</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collectors">collectors</a>
@@ -5369,7 +5562,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.network"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/network.py" type="text/plain"><tt>collectors.network</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/network.py" type="text/plain"><tt>collectors.network</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collectors">collectors</a>
@@ -5389,7 +5582,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.process"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/process.py" type="text/plain"><tt>collectors.process</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/process.py" type="text/plain"><tt>collectors.process</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collectors">collectors</a>
@@ -5408,7 +5601,7 @@ imported by:
 
 <div class="node">
   <a name="collectors.storage"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/collectors/storage.py" type="text/plain"><tt>collectors.storage</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/collectors/storage.py" type="text/plain"><tt>collectors.storage</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collectors">collectors</a>
@@ -5571,15 +5764,15 @@ imported by:
 
 <div class="node">
   <a name="config.settings"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/config/settings.py" type="text/plain"><tt>config.settings</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/config/settings.py" type="text/plain"><tt>config.settings</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#config">config</a>
  &#8226;   <a href="#i18n">i18n</a>
  &#8226;   <a href="#json">json</a>
  &#8226;   <a href="#os">os</a>
- &#8226;   <a href="#sys">sys</a>
  &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#utils.paths">utils.paths</a>
 
   </div>
   <div class="import">
@@ -5773,6 +5966,7 @@ imported by:
  &#8226;   <a href="#providers.gpu_provider">providers.gpu_provider</a>
  &#8226;   <a href="#psutil._common">psutil._common</a>
  &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
 
   </div>
 
@@ -5929,6 +6123,7 @@ imported by:
  &#8226;   <a href="#darkdetect._windows_detect">darkdetect._windows_detect</a>
  &#8226;   <a href="#providers.fps_provider">providers.fps_provider</a>
  &#8226;   <a href="#providers.gpu_provider">providers.gpu_provider</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
 
   </div>
 
@@ -5966,7 +6161,6 @@ imported by:
  &#8226;   <a href="#ui.app_window">ui.app_window</a>
  &#8226;   <a href="#ui.components.cards">ui.components.cards</a>
  &#8226;   <a href="#ui.components.navigation">ui.components.navigation</a>
- &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
  &#8226;   <a href="#ui.pages.base_page">ui.pages.base_page</a>
  &#8226;   <a href="#ui.pages.dashboard">ui.pages.dashboard</a>
  &#8226;   <a href="#ui.pages.diagnostics">ui.pages.diagnostics</a>
@@ -10275,6 +10469,7 @@ imported by:
  &#8226;   <a href="#PIL.GifImagePlugin">PIL.GifImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
  &#8226;   <a href="#ast">ast</a>
  &#8226;   <a href="#asyncio.constants">asyncio.constants</a>
@@ -10802,19 +10997,19 @@ imported by:
 
 <div class="node">
   <a name="i18n"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/i18n.py" type="text/plain"><tt>i18n</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/i18n.py" type="text/plain"><tt>i18n</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imported by:
     <a href="#config.settings">config.settings</a>
  &#8226;   <a href="#ui.app_window">ui.app_window</a>
  &#8226;   <a href="#ui.components.navigation">ui.components.navigation</a>
- &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
  &#8226;   <a href="#ui.pages.dashboard">ui.pages.dashboard</a>
  &#8226;   <a href="#ui.pages.diagnostics">ui.pages.diagnostics</a>
  &#8226;   <a href="#ui.pages.export">ui.pages.export</a>
  &#8226;   <a href="#ui.pages.live_monitor">ui.pages.live_monitor</a>
  &#8226;   <a href="#ui.pages.overlay">ui.pages.overlay</a>
  &#8226;   <a href="#ui.pages.settings">ui.pages.settings</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
 
   </div>
 
@@ -10831,6 +11026,7 @@ imports:
  &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib._bootstrap">importlib._bootstrap</a>
  &#8226;   <a href="#importlib._bootstrap_external">importlib._bootstrap_external</a>
+ &#8226;   <a href="#importlib.machinery">importlib.machinery</a>
  &#8226;   <a href="#sys">sys</a>
  &#8226;   <a href="#warnings">warnings</a>
 
@@ -10965,6 +11161,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#ctypes.util">ctypes.util</a>
+ &#8226;   <a href="#importlib">importlib</a>
  &#8226;   <a href="#importlib.abc">importlib.abc</a>
  &#8226;   <a href="#inspect">inspect</a>
  &#8226;   <a href="#pkgutil">pkgutil</a>
@@ -11412,6 +11609,7 @@ imported by:
  &#8226;   <a href="#PIL.IcoImagePlugin">PIL.IcoImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
  &#8226;   <a href="#PIL.IptcImagePlugin">PIL.IptcImagePlugin</a>
@@ -11831,6 +12029,7 @@ imported by:
  &#8226;   <a href="#PIL.GimpGradientFile">PIL.GimpGradientFile</a>
  &#8226;   <a href="#PIL.IcoImagePlugin">PIL.IcoImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
  &#8226;   <a href="#PIL.PdfImagePlugin">PIL.PdfImagePlugin</a>
  &#8226;   <a href="#PIL.PpmImagePlugin">PIL.PpmImagePlugin</a>
@@ -12888,6 +13087,7 @@ imported by:
  &#8226;   <a href="#PIL.ImImagePlugin">PIL.ImImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
  &#8226;   <a href="#PIL.Jpeg2KImagePlugin">PIL.Jpeg2KImagePlugin</a>
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
@@ -12985,6 +13185,7 @@ imported by:
  &#8226;   <a href="#random">random</a>
  &#8226;   <a href="#run.py">run.py</a>
  &#8226;   <a href="#runpy">runpy</a>
+ &#8226;   <a href="#scheduler.collector_loop">scheduler.collector_loop</a>
  &#8226;   <a href="#shlex">shlex</a>
  &#8226;   <a href="#shutil">shutil</a>
  &#8226;   <a href="#socket">socket</a>
@@ -13000,6 +13201,7 @@ imported by:
  &#8226;   <a href="#urllib.request">urllib.request</a>
  &#8226;   <a href="#utils.autostart">utils.autostart</a>
  &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#utils.paths">utils.paths</a>
  &#8226;   <a href="#uuid">uuid</a>
  &#8226;   <a href="#win32com">win32com</a>
  &#8226;   <a href="#win32com.client.gencache">win32com.client.gencache</a>
@@ -13310,7 +13512,7 @@ imported by:
 
 <div class="node">
   <a name="providers.cpu_temp_provider"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/providers/cpu_temp_provider.py" type="text/plain"><tt>providers.cpu_temp_provider</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/providers/cpu_temp_provider.py" type="text/plain"><tt>providers.cpu_temp_provider</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#abc">abc</a>
@@ -13329,7 +13531,7 @@ imported by:
 
 <div class="node">
   <a name="providers.fps_provider"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/providers/fps_provider.py" type="text/plain"><tt>providers.fps_provider</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/providers/fps_provider.py" type="text/plain"><tt>providers.fps_provider</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#ctypes">ctypes</a>
@@ -13343,7 +13545,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#ui.app_window">ui.app_window</a>
+    <a href="#scheduler.collector_loop">scheduler.collector_loop</a>
+ &#8226;   <a href="#ui.app_window">ui.app_window</a>
  &#8226;   <a href="#ui.pages.overlay">ui.pages.overlay</a>
 
   </div>
@@ -13352,7 +13555,7 @@ imported by:
 
 <div class="node">
   <a name="providers.gpu_provider"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/providers/gpu_provider.py" type="text/plain"><tt>providers.gpu_provider</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/providers/gpu_provider.py" type="text/plain"><tt>providers.gpu_provider</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#abc">abc</a>
@@ -13871,6 +14074,7 @@ imported by:
  &#8226;   <a href="#multiprocessing.pool">multiprocessing.pool</a>
  &#8226;   <a href="#multiprocessing.queues">multiprocessing.queues</a>
  &#8226;   <a href="#storage.sqlite_writer">storage.sqlite_writer</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
 
   </div>
 
@@ -14201,10 +14405,11 @@ imported by:
 
 <div class="node">
   <a name="scheduler.collector_loop"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/scheduler/collector_loop.py" type="text/plain"><tt>scheduler.collector_loop</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/scheduler/collector_loop.py" type="text/plain"><tt>scheduler.collector_loop</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#collectors.cpu">collectors.cpu</a>
+    <a href="#analyzer.report">analyzer.report</a>
+ &#8226;   <a href="#collectors.cpu">collectors.cpu</a>
  &#8226;   <a href="#collectors.gpu">collectors.gpu</a>
  &#8226;   <a href="#collectors.memory">collectors.memory</a>
  &#8226;   <a href="#collectors.network">collectors.network</a>
@@ -14212,6 +14417,8 @@ imports:
  &#8226;   <a href="#collectors.storage">collectors.storage</a>
  &#8226;   <a href="#config.settings">config.settings</a>
  &#8226;   <a href="#datetime">datetime</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#providers.fps_provider">providers.fps_provider</a>
  &#8226;   <a href="#pythoncom">pythoncom</a>
  &#8226;   <a href="#scheduler">scheduler</a>
  &#8226;   <a href="#storage.database">storage.database</a>
@@ -14375,6 +14582,7 @@ imported by:
  &#8226;   <a href="#psutil">psutil</a>
  &#8226;   <a href="#psutil._pswindows">psutil._pswindows</a>
  &#8226;   <a href="#subprocess">subprocess</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
 
   </div>
 
@@ -14693,7 +14901,7 @@ imported by:
 
 <div class="node">
   <a name="storage.database"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/storage/database.py" type="text/plain"><tt>storage.database</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/storage/database.py" type="text/plain"><tt>storage.database</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#config.settings">config.settings</a>
@@ -14714,7 +14922,7 @@ imported by:
 
 <div class="node">
   <a name="storage.sqlite_writer"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/storage/sqlite_writer.py" type="text/plain"><tt>storage.sqlite_writer</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/storage/sqlite_writer.py" type="text/plain"><tt>storage.sqlite_writer</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#datetime">datetime</a>
@@ -14791,6 +14999,7 @@ imported by:
  &#8226;   <a href="#PIL.FtexImagePlugin">PIL.FtexImagePlugin</a>
  &#8226;   <a href="#PIL.IcnsImagePlugin">PIL.IcnsImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.Jpeg2KImagePlugin">PIL.Jpeg2KImagePlugin</a>
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
@@ -14888,6 +15097,7 @@ imported by:
  &#8226;   <a href="#PIL.IcnsImagePlugin">PIL.IcnsImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMode">PIL.ImageMode</a>
  &#8226;   <a href="#PIL.ImageQt">PIL.ImageQt</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
@@ -14918,7 +15128,6 @@ imported by:
  &#8226;   <a href="#codecs">codecs</a>
  &#8226;   <a href="#collections">collections</a>
  &#8226;   <a href="#concurrent.futures.process">concurrent.futures.process</a>
- &#8226;   <a href="#config.settings">config.settings</a>
  &#8226;   <a href="#contextlib">contextlib</a>
  &#8226;   <a href="#ctypes">ctypes</a>
  &#8226;   <a href="#ctypes._aix">ctypes._aix</a>
@@ -15035,8 +15244,11 @@ imported by:
  &#8226;   <a href="#types">types</a>
  &#8226;   <a href="#typing">typing</a>
  &#8226;   <a href="#typing_extensions">typing_extensions</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
  &#8226;   <a href="#urllib.request">urllib.request</a>
  &#8226;   <a href="#utils.autostart">utils.autostart</a>
+ &#8226;   <a href="#utils.paths">utils.paths</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
  &#8226;   <a href="#uuid">uuid</a>
  &#8226;   <a href="#warnings">warnings</a>
  &#8226;   <a href="#weakref">weakref</a>
@@ -15223,6 +15435,8 @@ imported by:
  &#8226;   <a href="#subprocess">subprocess</a>
  &#8226;   <a href="#ui.pages.export">ui.pages.export</a>
  &#8226;   <a href="#ui.state_manager">ui.state_manager</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
  &#8226;   <a href="#zipfile">zipfile</a>
 
   </div>
@@ -15603,7 +15817,9 @@ imports:
   <div class="import">
 imported by:
     <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#_weakrefset">_weakrefset</a>
@@ -15693,8 +15909,11 @@ imported by:
  &#8226;   <a href="#PIL.ImImagePlugin">PIL.ImImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
  &#8226;   <a href="#PIL.ImageCms">PIL.ImageCms</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageDraw2">PIL.ImageDraw2</a>
  &#8226;   <a href="#PIL.ImageFile">PIL.ImageFile</a>
  &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageMath">PIL.ImageMath</a>
  &#8226;   <a href="#PIL.ImageMode">PIL.ImageMode</a>
  &#8226;   <a href="#PIL.ImageOps">PIL.ImageOps</a>
@@ -15727,6 +15946,7 @@ imported by:
  &#8226;   <a href="#PIL._avif">PIL._avif</a>
  &#8226;   <a href="#PIL._imaging">PIL._imaging</a>
  &#8226;   <a href="#PIL._imagingcms">PIL._imagingcms</a>
+ &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
  &#8226;   <a href="#PIL._imagingmath">PIL._imagingmath</a>
  &#8226;   <a href="#PIL._imagingtk">PIL._imagingtk</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
@@ -15849,6 +16069,7 @@ imported by:
  &#8226;   <a href="#ui.pages">ui.pages</a>
  &#8226;   <a href="#ui.state_manager">ui.state_manager</a>
  &#8226;   <a href="#ui.theme">ui.theme</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
 
   </div>
 
@@ -15856,7 +16077,7 @@ imported by:
 
 <div class="node">
   <a name="ui.app_window"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/app_window.py" type="text/plain"><tt>ui.app_window</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/app_window.py" type="text/plain"><tt>ui.app_window</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#config.settings">config.settings</a>
@@ -15876,7 +16097,12 @@ imports:
  &#8226;   <a href="#ui.pages.settings">ui.pages.settings</a>
  &#8226;   <a href="#ui.state_manager">ui.state_manager</a>
  &#8226;   <a href="#ui.theme">ui.theme</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
+ &#8226;   <a href="#utils">utils</a>
  &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
+ &#8226;   <a href="#win32api">win32api</a>
+ &#8226;   <a href="#win32con">win32con</a>
 
   </div>
   <div class="import">
@@ -15906,7 +16132,7 @@ imported by:
 
 <div class="node">
   <a name="ui.components.cards"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/components/cards.py" type="text/plain"><tt>ui.components.cards</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/components/cards.py" type="text/plain"><tt>ui.components.cards</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#customtkinter">customtkinter</a>
@@ -15924,7 +16150,7 @@ imported by:
 
 <div class="node">
   <a name="ui.components.navigation"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/components/navigation.py" type="text/plain"><tt>ui.components.navigation</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/components/navigation.py" type="text/plain"><tt>ui.components.navigation</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#customtkinter">customtkinter</a>
@@ -15944,15 +16170,22 @@ imported by:
 
 <div class="node">
   <a name="ui.overlay_window"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/overlay_window.py" type="text/plain"><tt>ui.overlay_window</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/overlay_window.py" type="text/plain"><tt>ui.overlay_window</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
-    <a href="#config.settings">config.settings</a>
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageChops">PIL.ImageChops</a>
+ &#8226;   <a href="#PIL.ImageDraw">PIL.ImageDraw</a>
+ &#8226;   <a href="#PIL.ImageFilter">PIL.ImageFilter</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
+ &#8226;   <a href="#config.settings">config.settings</a>
  &#8226;   <a href="#ctypes">ctypes</a>
- &#8226;   <a href="#customtkinter">customtkinter</a>
- &#8226;   <a href="#i18n">i18n</a>
+ &#8226;   <a href="#ctypes.wintypes">ctypes.wintypes</a>
  &#8226;   <a href="#ui">ui</a>
  &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#win32api">win32api</a>
+ &#8226;   <a href="#win32gui">win32gui</a>
 
   </div>
   <div class="import">
@@ -15987,7 +16220,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.base_page"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/base_page.py" type="text/plain"><tt>ui.pages.base_page</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/base_page.py" type="text/plain"><tt>ui.pages.base_page</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#customtkinter">customtkinter</a>
@@ -16011,7 +16244,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.dashboard"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/dashboard.py" type="text/plain"><tt>ui.pages.dashboard</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/dashboard.py" type="text/plain"><tt>ui.pages.dashboard</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#customtkinter">customtkinter</a>
@@ -16034,7 +16267,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.diagnostics"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/diagnostics.py" type="text/plain"><tt>ui.pages.diagnostics</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/diagnostics.py" type="text/plain"><tt>ui.pages.diagnostics</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#customtkinter">customtkinter</a>
@@ -16055,7 +16288,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.export"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/export.py" type="text/plain"><tt>ui.pages.export</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/export.py" type="text/plain"><tt>ui.pages.export</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#analyzer.report">analyzer.report</a>
@@ -16080,7 +16313,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.live_monitor"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/live_monitor.py" type="text/plain"><tt>ui.pages.live_monitor</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/live_monitor.py" type="text/plain"><tt>ui.pages.live_monitor</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#config.settings">config.settings</a>
@@ -16102,7 +16335,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.overlay"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/overlay.py" type="text/plain"><tt>ui.pages.overlay</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/overlay.py" type="text/plain"><tt>ui.pages.overlay</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#config.settings">config.settings</a>
@@ -16124,7 +16357,7 @@ imported by:
 
 <div class="node">
   <a name="ui.pages.settings"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/pages/settings.py" type="text/plain"><tt>ui.pages.settings</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/pages/settings.py" type="text/plain"><tt>ui.pages.settings</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#config.settings">config.settings</a>
@@ -16147,7 +16380,7 @@ imported by:
 
 <div class="node">
   <a name="ui.state_manager"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/state_manager.py" type="text/plain"><tt>ui.state_manager</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/state_manager.py" type="text/plain"><tt>ui.state_manager</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#collections">collections</a>
@@ -16171,7 +16404,7 @@ imported by:
 
 <div class="node">
   <a name="ui.theme"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/ui/theme.py" type="text/plain"><tt>ui.theme</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/theme.py" type="text/plain"><tt>ui.theme</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#customtkinter">customtkinter</a>
@@ -16190,6 +16423,30 @@ imported by:
  &#8226;   <a href="#ui.pages.live_monitor">ui.pages.live_monitor</a>
  &#8226;   <a href="#ui.pages.overlay">ui.pages.overlay</a>
  &#8226;   <a href="#ui.pages.settings">ui.pages.settings</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="ui.tray_icon"></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/ui/tray_icon.py" type="text/plain"><tt>ui.tray_icon</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#i18n">i18n</a>
+ &#8226;   <a href="#queue">queue</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#threading">threading</a>
+ &#8226;   <a href="#ui">ui</a>
+ &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#win32api">win32api</a>
+ &#8226;   <a href="#win32con">win32con</a>
+ &#8226;   <a href="#win32gui">win32gui</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#ui.app_window">ui.app_window</a>
 
   </div>
 
@@ -16346,13 +16603,18 @@ imported by:
 <span class="moduletype">NamespacePackage</span>  <div class="import">
 imports:
     <a href="#utils.autostart">utils.autostart</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
 
   </div>
   <div class="import">
 imported by:
-    <a href="#ui.pages.settings">ui.pages.settings</a>
+    <a href="#run.py">run.py</a>
+ &#8226;   <a href="#ui.app_window">ui.app_window</a>
+ &#8226;   <a href="#ui.pages.settings">ui.pages.settings</a>
  &#8226;   <a href="#utils.autostart">utils.autostart</a>
  &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#utils.paths">utils.paths</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
 
   </div>
 
@@ -16360,19 +16622,21 @@ imported by:
 
 <div class="node">
   <a name="utils.autostart"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/utils/autostart.py" type="text/plain"><tt>utils.autostart</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/utils/autostart.py" type="text/plain"><tt>utils.autostart</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#os">os</a>
  &#8226;   <a href="#sys">sys</a>
  &#8226;   <a href="#utils">utils</a>
  &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#utils.paths">utils.paths</a>
  &#8226;   <a href="#winreg">winreg</a>
 
   </div>
   <div class="import">
 imported by:
-    <a href="#ui.pages.settings">ui.pages.settings</a>
+    <a href="#run.py">run.py</a>
+ &#8226;   <a href="#ui.pages.settings">ui.pages.settings</a>
  &#8226;   <a href="#utils">utils</a>
 
   </div>
@@ -16381,13 +16645,14 @@ imported by:
 
 <div class="node">
   <a name="utils.logger"></a>
-  <a target="code" href="///C:/Users/thk/Documents/GitHub/Mem_use_log/app/utils/logger.py" type="text/plain"><tt>utils.logger</tt></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/utils/logger.py" type="text/plain"><tt>utils.logger</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
 imports:
     <a href="#logging">logging</a>
  &#8226;   <a href="#logging.handlers">logging.handlers</a>
  &#8226;   <a href="#os">os</a>
  &#8226;   <a href="#utils">utils</a>
+ &#8226;   <a href="#utils.paths">utils.paths</a>
 
   </div>
   <div class="import">
@@ -16402,7 +16667,56 @@ imported by:
  &#8226;   <a href="#ui.app_window">ui.app_window</a>
  &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
  &#8226;   <a href="#ui.state_manager">ui.state_manager</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
  &#8226;   <a href="#utils.autostart">utils.autostart</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="utils.paths"></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/utils/paths.py" type="text/plain"><tt>utils.paths</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#os">os</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#utils">utils</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#config.settings">config.settings</a>
+ &#8226;   <a href="#utils.autostart">utils.autostart</a>
+ &#8226;   <a href="#utils.logger">utils.logger</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="utils.shutdown"></a>
+  <a target="code" href="///C:/Users/thk/Documents/GitHub/Resource_Log/Mem_use_log/app/utils/shutdown.py" type="text/plain"><tt>utils.shutdown</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#atexit">atexit</a>
+ &#8226;   <a href="#ctypes">ctypes</a>
+ &#8226;   <a href="#signal">signal</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#threading">threading</a>
+ &#8226;   <a href="#utils">utils</a>
+ &#8226;   <a href="#utils.logger">utils.logger</a>
+ &#8226;   <a href="#win32api">win32api</a>
+ &#8226;   <a href="#win32con">win32con</a>
+ &#8226;   <a href="#win32gui">win32gui</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#run.py">run.py</a>
+ &#8226;   <a href="#ui.app_window">ui.app_window</a>
+ &#8226;   <a href="#utils">utils</a>
 
   </div>
 
@@ -16465,6 +16779,7 @@ imports:
 imported by:
     <a href="#PIL.IcoImagePlugin">PIL.IcoImagePlugin</a>
  &#8226;   <a href="#PIL.Image">PIL.Image</a>
+ &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
  &#8226;   <a href="#PIL.TgaImagePlugin">PIL.TgaImagePlugin</a>
@@ -16591,6 +16906,10 @@ imported by:
     <a href="#pywin.dialogs.list">pywin.dialogs.list</a>
  &#8226;   <a href="#pywin.dialogs.status">pywin.dialogs.status</a>
  &#8226;   <a href="#run.py">run.py</a>
+ &#8226;   <a href="#ui.app_window">ui.app_window</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
  &#8226;   <a href="#win32com">win32com</a>
  &#8226;   <a href="#win32com.client.selecttlb">win32com.client.selecttlb</a>
  &#8226;   <a href="#win32com.server.dispatcher">win32com.server.dispatcher</a>
@@ -17049,6 +17368,10 @@ imported by:
  &#8226;   <a href="#pywin.dialogs.status">pywin.dialogs.status</a>
  &#8226;   <a href="#pywin.mfc.dialog">pywin.mfc.dialog</a>
  &#8226;   <a href="#pywin.mfc.window">pywin.mfc.window</a>
+ &#8226;   <a href="#run.py">run.py</a>
+ &#8226;   <a href="#ui.app_window">ui.app_window</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
  &#8226;   <a href="#win32com.client.selecttlb">win32com.client.selecttlb</a>
  &#8226;   <a href="#win32com.server.policy">win32com.server.policy</a>
  &#8226;   <a href="#win32com.util">win32com.util</a>
@@ -17094,6 +17417,19 @@ imports:
   <div class="import">
 imported by:
     <a href="#logging.handlers">logging.handlers</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="win32gui"></a>
+  <tt>win32gui</tt> <span class="moduletype"><tt>C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32\win32gui.pyd</tt></span>  <div class="import">
+imported by:
+    <a href="#run.py">run.py</a>
+ &#8226;   <a href="#ui.overlay_window">ui.overlay_window</a>
+ &#8226;   <a href="#ui.tray_icon">ui.tray_icon</a>
+ &#8226;   <a href="#utils.shutdown">utils.shutdown</a>
 
   </div>
 

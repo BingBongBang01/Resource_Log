@@ -3,6 +3,7 @@
     "process_collection_interval": 60,
     "gpu_collection_interval_ms": 10000,
     "auto_start_recording": true,
+    "auto_export_on_exit": true,
     "export_directory": "C:\\Users\\thk\\Desktop\\log",
     "language": "ko",
     "start_on_boot": true,
@@ -18,21 +19,21 @@
         "gpu_vram_used": true,
         "gpu_temperature": true
     },
-    "overlay_enabled": false,
+    "overlay_enabled": true,
     "overlay_position": "top_left",
     "overlay_items": {
         "cpu_usage": true,
-        "cpu_temp": false,
+        "cpu_temp": true,
         "ram_used": true,
-        "ram_percent": false,
+        "ram_percent": true,
         "gpu_usage": true,
-        "gpu_vram": false,
-        "gpu_temp": false,
+        "gpu_vram": true,
+        "gpu_temp": true,
         "fps": true,
         "fps_avg": true,
-        "fps_min": false,
-        "fps_max": false,
-        "frame_time": false
+        "fps_min": true,
+        "fps_max": true,
+        "frame_time": true
     },
     "overlay_opacity": 0.8
 }

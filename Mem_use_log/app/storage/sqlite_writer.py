@@ -5,6 +5,9 @@ from .database import Database
 from typing import Dict, Any, List
 
 class SQLiteWriter:
+    # One batch list per queue item type; the names double as the queue tags.
+    BATCH_KINDS = ("system", "process", "gpu", "disk", "network", "fps")
+
     def __init__(self, db: Database, batch_size=50, flush_interval=10.0):
         self.db = db
         self.batch_size = batch_size
@@ -61,53 +64,51 @@ class SQLiteWriter:
     def write_network_data(self, session_id: str, timestamp: str, network_data: List[Dict[str, Any]]):
         self.q.put(("network", (session_id, timestamp, network_data)))
 
+    def write_fps_data(self, session_id: str, timestamp: str, fps_data: List[Dict[str, Any]]):
+        self.q.put(("fps", (session_id, timestamp, fps_data)))
+
     def _writer_loop(self):
-        batch_sys = []
-        batch_proc = []
-        batch_gpu = []
-        batch_disk = []
-        batch_network = []
+        batches = {kind: [] for kind in self.BATCH_KINDS}
         last_flush = time.time()
-        
+
         while self.running or not self.q.empty():
+            item_type = None
             try:
                 # Use a small timeout so we can check self.running periodically
                 item_type, item = self.q.get(timeout=0.5)
-                if item_type == "system":
-                    batch_sys.append(item)
-                elif item_type == "process":
-                    batch_proc.append(item)
-                elif item_type == "gpu":
-                    batch_gpu.append(item)
-                elif item_type == "disk":
-                    batch_disk.append(item)
-                elif item_type == "network":
-                    batch_network.append(item)
+                batches[item_type].append(item)
             except queue.Empty:
                 pass
+            except KeyError:
+                from utils.logger import logger
+                logger.error(f"Dropping queued item of unknown type {item_type!r}")
 
             now = time.time()
             time_to_flush = (now - last_flush) >= self.flush_interval
-            size_to_flush = len(batch_sys) >= self.batch_size or len(batch_proc) >= self.batch_size or len(batch_gpu) >= self.batch_size or len(batch_disk) >= self.batch_size or len(batch_network) >= self.batch_size
-            
+            size_to_flush = any(len(batch) >= self.batch_size for batch in batches.values())
+
             if size_to_flush or time_to_flush or (not self.running):
                 try:
-                    self._flush(batch_sys, batch_proc, batch_gpu, batch_disk, batch_network)
-                    batch_sys.clear()
-                    batch_proc.clear()
-                    batch_gpu.clear()
-                    batch_disk.clear()
-                    batch_network.clear()
+                    self._flush(batches)
+                    for batch in batches.values():
+                        batch.clear()
                     last_flush = now
                 except Exception as e:
                     from utils.logger import logger
                     logger.exception(f"SQLite Write Failed. Queue will retry. Error: {e}")
                     time.sleep(1.0) # Backoff before retry
 
-    def _flush(self, batch_sys, batch_proc, batch_gpu, batch_disk, batch_network):
-        if not batch_sys and not batch_proc and not batch_gpu and not batch_disk and not batch_network:
+    def _flush(self, batches):
+        if not any(batches.values()):
             return
-            
+
+        batch_sys = batches["system"]
+        batch_proc = batches["process"]
+        batch_gpu = batches["gpu"]
+        batch_disk = batches["disk"]
+        batch_network = batches["network"]
+        batch_fps = batches["fps"]
+
         with self.db.get_connection() as conn:
             cursor = conn.cursor()
             
@@ -218,11 +219,34 @@ class SQLiteWriter:
                         ))
                         
                 cursor.executemany('''
-                    INSERT INTO network_data 
+                    INSERT INTO network_data
                     (timestamp, session_id, interface_name, is_active, download_mbps, upload_mbps)
                     VALUES (?, ?, ?, ?, ?, ?)
                 ''', net_values)
-                
+
+            if batch_fps:
+                fps_values = []
+                for session_id, timestamp, apps in batch_fps:
+                    for app in apps:
+                        fps_values.append((
+                            timestamp,
+                            session_id,
+                            app.get('name'),
+                            app.get('fps'),
+                            app.get('fps_avg'),
+                            app.get('fps_min'),
+                            app.get('fps_max'),
+                            app.get('frame_time_ms'),
+                        ))
+
+                if fps_values:
+                    cursor.executemany('''
+                        INSERT INTO fps_data
+                        (timestamp, session_id, app_name, fps, fps_avg, fps_min, fps_max, frame_time_ms)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', fps_values)
+
+
             conn.commit()
             
             from datetime import datetime

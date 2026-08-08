@@ -35,6 +35,10 @@ def main():
         print("Mem_use_log is already running. Exiting this instance.")
         return
 
+    # Repairs the login entry if the executable moved since it was set up.
+    from utils import autostart
+    autostart.refresh()
+
     print("Initializing Collector Loop...")
     collector_loop = CollectorLoop()
 
