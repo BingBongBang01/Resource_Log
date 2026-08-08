@@ -1,0 +1,12 @@
+psutil==5.9.8
+wmi==1.5.1
+# pywin32 backs the WMI/COM calls used for GPU and CPU-temperature sensing.
+# wmi imports it but doesn't declare it, so it must be listed explicitly.
+pywin32==312
+customtkinter==6.0.0
+# Required by customtkinter (CTkImage); not imported by this app directly.
+Pillow==12.1.1
+
+# Build-only, for producing the Windows executable:
+#   pip install pyinstaller && pyinstaller Mem_use_log.spec --noconfirm
+# pyinstaller==6.21.0

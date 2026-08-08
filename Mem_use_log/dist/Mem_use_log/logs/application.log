@@ -1,0 +1,3 @@
+2026-08-08 19:20:29,001 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 19:20:37,057 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 19:20:37,411 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.

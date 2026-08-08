@@ -1,0 +1,2563 @@
+2026-08-08 16:58:54,029 - ERROR - [gpu_provider.py:22] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 19, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 16:58:55,282 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 16:59:01,150 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 16:59:04,561 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 16:59:04,663 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 16:59:04,712 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 16:59:04,712 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 16:59:12,860 - ERROR - [gpu_provider.py:22] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 19, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 16:59:14,120 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 16:59:19,978 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 16:59:23,117 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 16:59:23,481 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 16:59:23,536 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 16:59:23,536 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:09:04,291 - ERROR - [gpu_provider.py:22] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 19, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:09:24,333 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:09:30,194 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:09:36,194 - ERROR - [gpu_provider.py:113] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:09:40,336 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:09:40,696 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:09:42,143 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:09:42,143 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:19:05,850 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:19:28,098 - ERROR - [gpu_provider.py:148] - PerfCounterBackend failed to read GPULocalAdapterMemory counters
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 145, in get_all_gpu_data
+    used_mb = float(mem.DedicatedUsage or 0) / (1024 ** 2)
+                    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 603, in __getattr__
+    return getattr(self.ole_object, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: <unknown>.DedicatedUsage
+2026-08-08 17:20:16,775 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:20:39,518 - ERROR - [gpu_provider.py:183] - PerfCounterBackend failed to read GPULocalAdapterMemory counters
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 180, in get_all_gpu_data
+    used_mb = float(mem.DedicatedUsage or 0) / (1024 ** 2)
+                    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 603, in __getattr__
+    return getattr(self.ole_object, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: <unknown>.DedicatedUsage
+2026-08-08 17:21:43,248 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:22:05,211 - ERROR - [gpu_provider.py:181] - PerfCounterBackend failed to read GPULocalAdapterMemory counters
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 178, in get_all_gpu_data
+    used_mb = float(mem.DedicatedUsage or 0) / (1024 ** 2)
+                    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 603, in __getattr__
+    return getattr(self.ole_object, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: <unknown>.DedicatedUsage
+2026-08-08 17:22:33,570 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:27:39,811 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:27:50,691 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:27:50,701 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:27:56,514 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:27:56,516 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:02,515 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:02,516 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:08,514 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:08,515 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:14,520 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:14,522 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:28:16,971 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:28:17,027 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:29:43,230 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:29:49,195 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:29:49,197 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:29:55,049 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:29:55,050 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:01,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:01,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:07,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:07,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:13,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:13,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:19,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:19,058 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:25,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:25,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:31,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:31,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:37,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:37,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:43,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:43,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:49,049 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:49,050 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:55,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:30:55,050 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:01,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:01,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:07,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:07,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:13,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:13,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:19,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:19,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:25,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:25,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:31,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:31,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:37,046 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:37,047 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:43,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:43,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:49,049 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:49,050 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:55,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:31:55,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:01,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:01,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:07,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:07,049 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:13,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:13,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:19,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:19,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:25,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:25,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:31,047 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:31,048 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:37,048 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:37,050 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:43,051 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:43,052 - ERROR - [gpu_provider.py:262] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', None, None, 0, -2147221008), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 244, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:32:48,732 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:32:49,057 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:39:42,295 - ERROR - [gpu_provider.py:23] - Failed to initialize LibreHardwareMonitor WMI namespace
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+pywintypes.com_error: (-2147217394, 'OLE error 0x8004100e', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 20, in __init__
+    self.w = wmi.WMI(namespace="root\\LibreHardwareMonitor")
+             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi: <x_wmi: Unexpected COM Error (-2147217394, 'OLE error 0x8004100e', None, None)>
+2026-08-08 17:39:48,516 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', '응용 프로그램이 다른 스레드를 위해 배열된 인터페이스를 호출했습니다. ', None, 0, -2147417842), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:39:48,525 - ERROR - [gpu_provider.py:274] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', '응용 프로그램이 다른 스레드를 위해 배열된 인터페이스를 호출했습니다. ', None, 0, -2147417842), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 256, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:39:54,335 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', '응용 프로그램이 다른 스레드를 위해 배열된 인터페이스를 호출했습니다. ', None, 0, -2147417842), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:39:54,336 - ERROR - [gpu_provider.py:274] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', '응용 프로그램이 다른 스레드를 위해 배열된 인터페이스를 호출했습니다. ', None, 0, -2147417842), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 256, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:40:00,335 - ERROR - [gpu_provider.py:147] - PerfCounterBackend failed to enumerate video controllers
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', '응용 프로그램이 다른 스레드를 위해 배열된 인터페이스를 호출했습니다. ', None, 0, -2147417842), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 136, in _adapters
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:40:00,336 - ERROR - [gpu_provider.py:274] - WMIBackend get_all_gpu_data encountered an error
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1209, in __getattr__
+    return self._cached_classes(attribute)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1220, in _cached_classes
+    self._classes_map[class_name] = _wmi_class(self, self._namespace.Get(class_name))
+                                                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "<COMObject winmgmts:>", line 2, in Get
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 356, in _ApplyTypes_
+    result = self._oleobj_.InvokeTypes(
+        *(dispid, LCID, wFlags, retType, argTypes) + args
+    )
+pywintypes.com_error: (-2147352567, '예외가 발생했습니다.', (0, 'SWbemServicesEx', '응용 프로그램이 다른 스레드를 위해 배열된 인터페이스를 호출했습니다. ', None, 0, -2147417842), None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 256, in get_all_gpu_data
+    for gpu in self.w.Win32_VideoController():
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\wmi.py", line 1211, in __getattr__
+    return getattr(self._namespace, attribute)
+  File "C:\Users\thk\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\win32com\client\dynamic.py", line 631, in __getattr__
+    raise AttributeError(f"{self._username_}.{attr}")
+AttributeError: winmgmts:.Win32_VideoController
+2026-08-08 17:40:03,794 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:40:03,849 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:44:23,596 - INFO - [gpu_provider.py:163] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:44:34,753 - ERROR - [gpu_provider.py:285] - DXGI adapter enumeration failed; falling back to WMI
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 281, in _adapters
+    adapters = [a for a in dxgi_adapters() if not _is_virtual_adapter(a["name"])]
+                           ^^^^^^^^^^^^^^^
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in dxgi_adapters
+    raise OSError(f"CreateDXGIFactory1 failed (hr=0x{hr & 0xFFFFFFFF:08X})")
+OSError: CreateDXGIFactory1 failed (hr=0x80004002)
+2026-08-08 17:44:45,817 - ERROR - [gpu_provider.py:285] - DXGI adapter enumeration failed; falling back to WMI
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 281, in _adapters
+    adapters = [a for a in dxgi_adapters() if not _is_virtual_adapter(a["name"])]
+                           ^^^^^^^^^^^^^^^
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 95, in dxgi_adapters
+    raise OSError(f"CreateDXGIFactory1 failed (hr=0x{hr & 0xFFFFFFFF:08X})")
+OSError: CreateDXGIFactory1 failed (hr=0x80004002)
+2026-08-08 17:47:36,750 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:48:29,287 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:48:37,280 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:48:37,612 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:48:39,093 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:48:45,086 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:48:45,540 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:49:15,440 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:51:34,536 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:51:45,422 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:51:51,559 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:51:52,064 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 17:51:53,571 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 17:51:57,564 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 17:51:57,578 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:04:02,025 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:04:10,066 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:04:30,042 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:04:30,066 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:09:07,704 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:09:11,568 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:09:31,912 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:09:31,919 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:10:20,486 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:10:22,025 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:10:22,025 - INFO - [gpu_provider.py:267] - GPU performance counters unavailable on this system
+2026-08-08 18:10:22,025 - ERROR - [gpu_provider.py:455] - Failed to initialize WMIBackend
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147221020, '잘못된 구문입니다.', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi_uninitialised_thread: <x_wmi: Unexpected COM Error (-2147221020, '잘못된 구문입니다.', None, None)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 452, in __init__
+    self.w = wmi.WMI()
+             ^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1357, in connect
+    raise x_wmi_uninitialised_thread("WMI returned a syntax error: you're probably running inside a thread without first calling pythoncom.CoInitialize[Ex]")
+wmi.x_wmi_uninitialised_thread: <x_wmi: WMI returned a syntax error: you're probably running inside a thread without first calling pythoncom.CoInitialize[Ex] (no underlying exception)>
+2026-08-08 18:10:44,199 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:10:44,590 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:11:04,118 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:11:05,525 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:11:05,526 - INFO - [gpu_provider.py:267] - GPU performance counters unavailable on this system
+2026-08-08 18:11:05,526 - ERROR - [gpu_provider.py:455] - Failed to initialize WMIBackend
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1340, in connect
+    obj = GetObject(moniker)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 86, in GetObject
+    return Moniker(Pathname, clsctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32com\client\__init__.py", line 103, in Moniker
+    moniker, i, bindCtx = pythoncom.MkParseDisplayName(Pathname)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pywintypes.com_error: (-2147221020, '잘못된 구문입니다.', None, None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1354, in connect
+    handle_com_error()
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 258, in handle_com_error
+    raise klass(com_error=err)
+wmi.x_wmi_uninitialised_thread: <x_wmi: Unexpected COM Error (-2147221020, '잘못된 구문입니다.', None, None)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\thk\Documents\GitHub\Mem_use_log\app\providers\gpu_provider.py", line 452, in __init__
+    self.w = wmi.WMI()
+             ^^^^^^^^^
+  File "C:\Users\thk\AppData\Local\Programs\Python\Python312\Lib\site-packages\wmi.py", line 1357, in connect
+    raise x_wmi_uninitialised_thread("WMI returned a syntax error: you're probably running inside a thread without first calling pythoncom.CoInitialize[Ex]")
+wmi.x_wmi_uninitialised_thread: <x_wmi: WMI returned a syntax error: you're probably running inside a thread without first calling pythoncom.CoInitialize[Ex] (no underlying exception)>
+2026-08-08 18:11:27,853 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:11:28,242 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:11:29,985 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:11:53,978 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:11:54,483 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:21:12,082 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 18:21:21,038 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:21:21,064 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 18:21:31,858 - INFO - [sqlite_writer.py:33] - Waiting for SQLiteWriter to drain queue and flush...
+2026-08-08 18:21:32,361 - INFO - [sqlite_writer.py:38] - SQLiteWriter successfully flushed and stopped.
