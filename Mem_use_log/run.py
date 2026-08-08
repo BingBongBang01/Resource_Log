@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'app'
 
 from scheduler.collector_loop import CollectorLoop
 from ui.app_window import AppWindow
+from utils import shutdown
 
 _MUTEX_NAME = "Global\\MemUseLog_SingleInstance_Mutex"
 _mutex_handle = None
@@ -37,6 +38,11 @@ def main():
     print("Initializing Collector Loop...")
     collector_loop = CollectorLoop()
 
+    # Windows shutdown/logoff, Ctrl+C and an unhandled crash all skip the
+    # mainloop's exit path, so hook them up before the GUI can record
+    # anything worth losing.
+    shutdown.register(lambda reason, budget: collector_loop.save_and_stop(timeout=budget))
+
     print("Starting GUI...")
     app = AppWindow(collector_loop)
 
@@ -46,7 +52,7 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
-        collector_loop.stop()
+        shutdown.run_now("main loop exited")
 
 if __name__ == "__main__":
     main()

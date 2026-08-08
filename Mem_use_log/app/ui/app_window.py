@@ -124,9 +124,19 @@ class AppWindow(ctk.CTk):
         self.current_page = None
         self.nav_rail.select("Dashboard")
 
+        # Closing the window is just one of several ways this process can
+        # end; they all converge on utils.shutdown so the logs get saved
+        # exactly once regardless of which one fires.
+        self.protocol("WM_DELETE_WINDOW", self._on_close)
+
         # Auto-start logging on launch if enabled in settings
         if config.AUTO_START_RECORDING and not self.collector.running:
             self.toggle_recording()
+
+    def _on_close(self):
+        from utils import shutdown
+        shutdown.run_now("window closed")
+        self.destroy()
 
     def toggle_recording(self):
         if not self.collector.running:
@@ -134,7 +144,9 @@ class AppWindow(ctk.CTk):
             self.recording_started_at = time.monotonic()
             app_state.update({"recording_state": "recording", "recording_duration_sec": 0})
         else:
-            self.collector.stop()
+            # save_and_stop rather than stop: one finished run, one CSV,
+            # whether the run ends here or because the PC is shutting down.
+            self.collector.save_and_stop()
             self.recording_started_at = None
             app_state.set("recording_state", "stopped")
 

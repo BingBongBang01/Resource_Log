@@ -77,6 +77,9 @@ class Settings:
         # instead of stalling the CPU/RAM sampling loop.
         self.GPU_COLLECTION_INTERVAL_MS = 10000
         self.AUTO_START_RECORDING = True
+        # Write the finished run out as CSV whenever logging stops — including
+        # when Windows shuts down underneath us.
+        self.AUTO_EXPORT_ON_EXIT = True
         self.EXPORT_DIRECTORY = os.path.join(PROJECT_ROOT, "data", "exports")
         self.LANGUAGE = "ko"
         self.START_ON_BOOT = False
@@ -115,7 +118,8 @@ class Settings:
 
 
                     self.AUTO_START_RECORDING = data.get("auto_start_recording", self.AUTO_START_RECORDING)
-                    
+                    self.AUTO_EXPORT_ON_EXIT = bool(data.get("auto_export_on_exit", self.AUTO_EXPORT_ON_EXIT))
+
                     export_dir = data.get("export_directory")
                     if export_dir and isinstance(export_dir, str):
                         self.EXPORT_DIRECTORY = export_dir
@@ -163,6 +167,7 @@ class Settings:
             "process_collection_interval": self.PROCESS_COLLECTION_INTERVAL,
             "gpu_collection_interval_ms": self.GPU_COLLECTION_INTERVAL_MS,
             "auto_start_recording": self.AUTO_START_RECORDING,
+            "auto_export_on_exit": self.AUTO_EXPORT_ON_EXIT,
             "export_directory": self.EXPORT_DIRECTORY,
             "language": self.LANGUAGE,
             "start_on_boot": self.START_ON_BOOT,

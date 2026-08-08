@@ -50,15 +50,61 @@ class CollectorLoop:
             self.proc_thread.start()
             self.gpu_thread.start()
 
-    def stop(self):
+    def stop(self, timeout: float = 15.0):
+        """Stop sampling and write everything still queued to the database.
+
+        `timeout` is the total budget for draining; the Windows-shutdown
+        path passes a smaller one because the OS kills us if we dawdle.
+        """
         self.running = False
         self.stop_event.set()
+        # The collector threads wake on stop_event immediately, so this only
+        # ever costs real time when a sensor query (GPU/WMI) is mid-flight.
+        join_timeout = max(0.5, min(2.0, timeout / 8.0))
         for attr in ("sys_thread", "proc_thread", "gpu_thread"):
             thread = getattr(self, attr, None)
             if thread:
-                thread.join(timeout=2.0)
+                thread.join(timeout=join_timeout)
         self.run_id = None
-        self.writer.stop()
+        self.writer.stop(timeout=timeout)
+
+    def save_and_stop(self, timeout: float = 15.0):
+        """Everything that has to happen before this process may die.
+
+        Called from every exit path — window close, Ctrl+C, Windows
+        shutdown — via utils.shutdown, so it must be safe to run twice.
+        """
+        run_id = self.run_id
+        was_recording = self.running
+
+        self.stop(timeout=timeout)
+
+        if was_recording and config.AUTO_EXPORT_ON_EXIT:
+            self._export_session_csv(run_id)
+
+    def _export_session_csv(self, run_id):
+        """Drop a CSV copy of the run that just ended into the export folder.
+
+        Only this run's rows are written: the database accumulates every
+        session ever recorded, and re-dumping all of it on each exit would
+        get slower every time the app is used.
+        """
+        import os
+        from analyzer.report import CSVExporter
+        from utils.logger import logger
+
+        try:
+            export_dir = config.EXPORT_DIRECTORY
+            os.makedirs(export_dir, exist_ok=True)
+            stamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            path = os.path.join(export_dir, f"system_log_{stamp}.csv")
+
+            if CSVExporter(self.db).export_system_data(path, session_id=run_id):
+                logger.info(f"Auto-exported session {run_id} to {path}")
+            else:
+                logger.info("Auto-export skipped: this run recorded no system data.")
+        except Exception:
+            logger.exception("Auto-export on exit failed")
 
     @staticmethod
     def _with_com(fn):

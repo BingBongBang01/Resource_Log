@@ -28,6 +28,13 @@ hiddenimports = [
     "pythoncom",
     "pywintypes",
     "wmi",
+    # The hidden window that catches WM_QUERYENDSESSION so the logs get
+    # flushed when Windows shuts down (app/utils/shutdown.py). Listed
+    # explicitly because losing it would silently disable save-on-shutdown
+    # in the packaged build only.
+    "win32api",
+    "win32con",
+    "win32gui",
 ]
 
 # Large libraries that get pulled in transitively but are never used here.

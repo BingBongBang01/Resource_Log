@@ -26,16 +26,25 @@ class SQLiteWriter:
             self.thread = threading.Thread(target=self._writer_loop, daemon=True)
             self.thread.start()
 
-    def stop(self):
+    def stop(self, timeout: float = 15.0):
+        """Drain whatever is still queued into the database, then stop.
+
+        `timeout` is how long the caller can afford to wait: a Windows
+        shutdown gives us only a few seconds before the process is killed,
+        while a user closing the window can wait as long as it takes.
+        """
         from utils.logger import logger
         self.running = False
         if self.thread:
-            logger.info("Waiting for SQLiteWriter to drain queue and flush...")
-            self.thread.join(timeout=15.0)
+            logger.info(f"Waiting up to {timeout:.0f}s for SQLiteWriter to drain queue and flush...")
+            self.thread.join(timeout=timeout)
             if self.thread.is_alive():
-                logger.warning("SQLiteWriter did not finish flushing within 15 seconds!")
+                logger.warning(f"SQLiteWriter did not finish flushing within {timeout:.0f} seconds!")
             else:
                 logger.info("SQLiteWriter successfully flushed and stopped.")
+                # Cleared so a second stop() — the exit paths deliberately
+                # overlap — doesn't re-join an already finished thread.
+                self.thread = None
 
     def write_system_data(self, data: Dict[str, Any]):
         self.q.put(("system", data))

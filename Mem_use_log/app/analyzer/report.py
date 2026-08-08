@@ -5,11 +5,14 @@ class CSVExporter:
     def __init__(self, db: Database):
         self.db = db
 
-    def _export_table(self, table_name: str, output_path: str) -> bool:
+    def _export_table(self, table_name: str, output_path: str, session_id: str = None) -> bool:
         with self.db.get_connection() as conn:
             cursor = conn.cursor()
             try:
-                cursor.execute(f"SELECT * FROM {table_name}")
+                if session_id:
+                    cursor.execute(f"SELECT * FROM {table_name} WHERE session_id = ?", (session_id,))
+                else:
+                    cursor.execute(f"SELECT * FROM {table_name}")
                 rows = cursor.fetchall()
                 
                 if not rows:
@@ -28,12 +31,18 @@ class CSVExporter:
                 logger.exception(f"Failed to export {table_name} to {output_path}")
                 return False
 
-    def export_system_data(self, output_path: str = "data/exports/system_data.csv"):
+    def export_system_data(self, output_path: str = "data/exports/system_data.csv", session_id: str = None):
+        """Export every table to CSVs sharing `output_path`'s base name.
+
+        Passing `session_id` narrows the dump to a single recording run —
+        that's what the automatic export on exit uses, so each run gets its
+        own file instead of re-dumping the whole history every time.
+        """
         import os
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        
+
         # 1. Export main system data
-        has_data = self._export_table("system_data", output_path)
+        has_data = self._export_table("system_data", output_path, session_id)
         
         # 2. Export GPU, Process, Disk, and Network data using the same base name
         dir_name = os.path.dirname(output_path)
@@ -57,9 +66,9 @@ class CSVExporter:
         disk_path = os.path.join(dir_name, disk_name)
         net_path = os.path.join(dir_name, net_name)
         
-        self._export_table("gpu_data", gpu_path)
-        self._export_table("process_data", process_path)
-        self._export_table("disk_data", disk_path)
-        self._export_table("network_data", net_path)
+        self._export_table("gpu_data", gpu_path, session_id)
+        self._export_table("process_data", process_path, session_id)
+        self._export_table("disk_data", disk_path, session_id)
+        self._export_table("network_data", net_path, session_id)
         
         return has_data

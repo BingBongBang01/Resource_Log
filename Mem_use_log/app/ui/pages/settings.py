@@ -45,6 +45,12 @@ class SettingsPage(BasePage):
                                                font=get_typography().body_large, text_color=Colors.TEXT_PRIMARY)
         self.chk_auto_start.pack(anchor="w", padx=Spacing.MD, pady=(Spacing.MD, 0))
 
+        # Save a CSV of each finished run automatically
+        self.auto_export_var = ctk.BooleanVar(value=config.AUTO_EXPORT_ON_EXIT)
+        self.chk_auto_export = ctk.CTkCheckBox(self, text=t("auto_export_on_exit"), variable=self.auto_export_var,
+                                                font=get_typography().body_large, text_color=Colors.TEXT_PRIMARY)
+        self.chk_auto_export.pack(anchor="w", padx=Spacing.MD, pady=(Spacing.XS, 0))
+
         # Start on Windows boot
         self.start_on_boot_var = ctk.BooleanVar(value=config.START_ON_BOOT)
         self.chk_start_on_boot = ctk.CTkCheckBox(self, text=t("start_on_boot"), variable=self.start_on_boot_var,
@@ -69,6 +75,7 @@ class SettingsPage(BasePage):
         config.EXPORT_DIRECTORY = self.export_dir_var.get()
         config.LANGUAGE = LANGUAGE_LABELS.get(self.language_var.get(), config.LANGUAGE)
         config.AUTO_START_RECORDING = self.auto_start_var.get()
+        config.AUTO_EXPORT_ON_EXIT = self.auto_export_var.get()
 
         want_boot_start = self.start_on_boot_var.get()
         boot_start_ok = True
