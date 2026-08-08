@@ -91,6 +91,16 @@ def _start_session_end_watcher():
 
 
 def _session_end_loop():
+    # Everything, imports included, sits inside the try: a packaged build has
+    # no stderr, so an exception escaping this thread would disappear without
+    # a trace and take save-on-shutdown with it.
+    try:
+        _pump_session_end_messages()
+    except Exception:
+        logger.exception("Shutdown watcher stopped; logs may be lost on Windows shutdown")
+
+
+def _pump_session_end_messages():
     import win32api
     import win32con
     import win32gui
@@ -114,22 +124,21 @@ def _session_end_loop():
             _save(hwnd)
         return 0
 
-    try:
-        wc = win32gui.WNDCLASS()
-        wc.hInstance = win32api.GetModuleHandle(None)
-        wc.lpszClassName = "MemUseLogShutdownWatcher"
-        wc.lpfnWndProc = {
-            win32con.WM_QUERYENDSESSION: _on_query_end_session,
-            win32con.WM_ENDSESSION: _on_end_session,
-        }
-        class_atom = win32gui.RegisterClass(wc)
-        win32gui.CreateWindow(
-            class_atom, "Mem_use_log shutdown watcher",
-            0, 0, 0, 0, 0, 0, 0, wc.hInstance, None,
-        )
-        win32gui.PumpMessages()
-    except Exception:
-        logger.exception("Shutdown watcher stopped; logs may be lost on Windows shutdown")
+    wc = win32gui.WNDCLASS()
+    wc.hInstance = win32api.GetModuleHandle(None)
+    wc.lpszClassName = "MemUseLogShutdownWatcher"
+    wc.lpfnWndProc = {
+        win32con.WM_QUERYENDSESSION: _on_query_end_session,
+        win32con.WM_ENDSESSION: _on_end_session,
+    }
+    class_atom = win32gui.RegisterClass(wc)
+    hwnd = win32gui.CreateWindow(
+        class_atom, "Mem_use_log shutdown watcher",
+        0, 0, 0, 0, 0, 0, 0, wc.hInstance, None,
+    )
+    # Logged so a packaged build can be checked without a real reboot.
+    logger.info(f"Shutdown watcher listening for session end (hwnd {hwnd}).")
+    win32gui.PumpMessages()
 
 
 def _block_shutdown(hwnd) -> bool:
