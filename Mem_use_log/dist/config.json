@@ -29,7 +29,7 @@
     "overlay_items": {
         "cpu_usage": false,
         "cpu_temp": false,
-        "ram_used": false,
+        "ram_used": true,
         "ram_percent": true,
         "gpu_usage": false,
         "gpu_vram": false,

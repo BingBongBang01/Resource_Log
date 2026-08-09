@@ -7,3 +7,21 @@
 2026-08-08 21:02:19,492 - INFO - [sqlite_writer.py:47] - SQLiteWriter successfully flushed and stopped.
 2026-08-08 21:02:19,503 - INFO - [collector_loop.py:103] - Auto-exported session run_f8f70b59a4d94a6d9721cbe6c6d9fbdb to C:\Users\thk\Documents\GitHub\Resource_Log\Mem_use_log\dist\data\exports\system_log_2026-08-08_21-02-19.csv
 2026-08-08 21:03:11,158 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-08 23:50:54,564 - INFO - [shutdown.py:51] - Shutdown (system-shutdown): saving logs...
+2026-08-08 23:50:54,607 - INFO - [sqlite_writer.py:42] - Waiting up to 6s for SQLiteWriter to drain queue and flush...
+2026-08-08 23:50:54,979 - INFO - [sqlite_writer.py:47] - SQLiteWriter successfully flushed and stopped.
+2026-08-08 23:50:55,498 - INFO - [collector_loop.py:103] - Auto-exported session run_cf7f71189af8419f858da37ba164da81 to C:\Users\thk\Desktop\log\system_log_2026-08-08_23-50-55.csv
+2026-08-08 23:50:55,498 - INFO - [shutdown.py:54] - Shutdown (system-shutdown): logs saved.
+2026-08-09 08:39:59,729 - INFO - [shutdown.py:140] - Shutdown watcher listening for session end (hwnd 67946).
+2026-08-09 08:40:00,031 - INFO - [overlay_window.py:171] - Overlay window created (hwnd 67960).
+2026-08-09 08:40:00,040 - INFO - [tray_icon.py:114] - Tray icon created (hwnd 67962).
+2026-08-09 08:40:00,074 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
+2026-08-09 08:59:22,606 - INFO - [shutdown.py:51] - Shutdown (system-shutdown): saving logs...
+2026-08-09 08:59:22,642 - INFO - [sqlite_writer.py:42] - Waiting up to 6s for SQLiteWriter to drain queue and flush...
+2026-08-09 08:59:22,855 - INFO - [sqlite_writer.py:47] - SQLiteWriter successfully flushed and stopped.
+2026-08-09 08:59:22,884 - INFO - [collector_loop.py:103] - Auto-exported session run_1065585d9e2843ddbe8630cd70fcf383 to C:\Users\thk\Desktop\log\system_log_2026-08-09_08-59-22.csv
+2026-08-09 08:59:22,884 - INFO - [shutdown.py:54] - Shutdown (system-shutdown): logs saved.
+2026-08-09 09:44:32,535 - INFO - [shutdown.py:140] - Shutdown watcher listening for session end (hwnd 67848).
+2026-08-09 09:44:32,867 - INFO - [overlay_window.py:171] - Overlay window created (hwnd 67872).
+2026-08-09 09:44:32,876 - INFO - [tray_icon.py:114] - Tray icon created (hwnd 67874).
+2026-08-09 09:44:32,925 - INFO - [gpu_provider.py:181] - LibreHardwareMonitor not available; falling back to built-in GPU counters
